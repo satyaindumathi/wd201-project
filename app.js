@@ -9,17 +9,8 @@ app.use(bodyParser.json());
 
 app.set("view engine","ejs");
 
-app.get("/", async (request,response) => {
-  const allTodos = await Todo.getTodos();
-  if (request.accepts("html")) {
-    response.render('index',{
-    allTodos
-  });
-  } else {
-    response.json({
-      allTodos
-    })
-  }
+app.get("/", (request,response) => {
+  response.render('index');
 });
 
 app.use(express.static(path.join(__dirname,'public')));
