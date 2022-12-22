@@ -11,7 +11,7 @@
      "ecmaVersion":"latest"
     },
     "rules":{},
-    "eslint.options": {
+    "parserOptions": {
     "useEslintrc": false,
     "parserOptions": {
         "ecmaVersion": 2017
