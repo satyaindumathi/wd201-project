@@ -4,6 +4,6 @@ body {
     font-size: 14px;
 }
 
-.Todo.Item:hover .Trash-icon {
+.Todo.Item:hover .trash-icon {
     display: block;
 }
