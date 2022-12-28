@@ -36,6 +36,14 @@ module.exports = (sequelize, DataTypes) => {
         order: [["id", "ASC"]],
       });
     }
+
+    static async remove(id) {
+      return this.destroy({
+        where: {
+          id,
+        },
+      });
+    }
     static async dueLater() {
       return await Todo.findAll({
         where: {
@@ -47,6 +55,7 @@ module.exports = (sequelize, DataTypes) => {
         order: [["id", "ASC"]],
       });
     }
+
     static async completedTodos() {
       return await Todo.findAll({
         where: {
@@ -55,24 +64,16 @@ module.exports = (sequelize, DataTypes) => {
         order: [["id", "ASC"]],
       });
     }
-
+    setCompletionStatus(status) {
+      return this.update({ completed: status });
+    }
     static addTodo({ title, dueDate }) {
       return this.create({ title: title, dueDate: dueDate, completed: false });
     }
-    static async remove(id) {
-      return this.destroy({
-        where: {
-          id,
-        },
+    static getTodos() {
+      return this.findAll({
+        order: [["id", "ASC"]],
       });
-    }
-
-    // markAsCompleted() {
-    //   if (this.completed == true) return this.update({ completed: false });
-    //   else return this.update({ completed: true });
-    // }
-    setCompletionStatus(torf) {
-      return this.update({ completed: torf });
     }
   }
   Todo.init(
